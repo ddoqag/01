@@ -1,0 +1,9 @@
+{
+  "name": "flow-mode-manager",
+  "version": "1.0.0",
+  "description": "Flow系统模式管理插件，负责三种交互模式的切换和状态显示",
+  "author": {
+    "name": "Flow Development Team",
+    "email": "flow@team.com"
+  }
+}

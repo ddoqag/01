@@ -1,0 +1,9 @@
+{
+  "name": "agentflow-workflow",
+  "version": "1.0.0",
+  "description": "AgentFlow工作流插件，实现多Agent协调工作流",
+  "author": {
+    "name": "Flow Development Team",
+    "email": "flow@team.com"
+  }
+}

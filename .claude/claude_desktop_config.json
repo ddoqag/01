@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "x64dbg": {
+      "command": "C:/MCPProxy-STDIO-to-SSE.exe",
+      "args": [
+        "http://localhost:3001"
+      ]
+    }
+  }
+}

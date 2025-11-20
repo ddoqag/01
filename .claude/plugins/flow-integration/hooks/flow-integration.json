@@ -1,0 +1,17 @@
+{
+  "UserPromptSubmit": {
+    "handler": "hooks/handlers/flow-connector.py",
+    "enabled": true,
+    "conditions": [
+      "使用.*agent.*执行",
+      "调用.*agent.*进行",
+      "让.*agent.*处理"
+    ],
+    "mode": "flow"
+  },
+  "SessionStart": {
+    "handler": "hooks/handlers/flow-connector.py",
+    "enabled": true,
+    "action": "status"
+  }
+}

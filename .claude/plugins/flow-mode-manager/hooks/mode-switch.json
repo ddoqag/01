@@ -1,0 +1,16 @@
+{
+  "UserPromptSubmit": {
+    "handler": "hooks/handlers/mode-switch-handler.py",
+    "enabled": true,
+    "conditions": [
+      "切换模式",
+      "switch mode",
+      "alt切换"
+    ]
+  },
+  "SessionStart": {
+    "handler": "hooks/handlers/mode-switch-handler.py",
+    "enabled": true,
+    "action": "get"
+  }
+}

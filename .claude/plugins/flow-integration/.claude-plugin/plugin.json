@@ -1,0 +1,9 @@
+{
+  "name": "flow-integration",
+  "version": "1.0.0",
+  "description": "Flow系统集成插件，连接现有的83个专业Agent",
+  "author": {
+    "name": "Flow Development Team",
+    "email": "flow@team.com"
+  }
+}

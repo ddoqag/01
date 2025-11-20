@@ -1,0 +1,18 @@
+{
+  "UserPromptSubmit": {
+    "handler": "hooks/handlers/workflow-executor.py",
+    "enabled": true,
+    "conditions": [
+      "协调工作流.*-",
+      "启动AgentFlow.*执行",
+      "使用工作流管理器处理",
+      "执行工作流.*-"
+    ],
+    "mode": "agentflow"
+  },
+  "SessionStart": {
+    "handler": "hooks/handlers/workflow-executor.py",
+    "enabled": true,
+    "action": "workflows"
+  }
+}
