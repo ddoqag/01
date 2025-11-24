@@ -62,15 +62,45 @@ class DeepSeekConfig:
     temperature: float = 0.7
 
 
+def load_config_from_settings() -> Optional[DeepSeekConfig]:
+    """从settings.local.json加载配置"""
+    try:
+        settings_path = current_dir / "settings.local.json"
+        if settings_path.exists():
+            with open(settings_path, 'r', encoding='utf-8') as f:
+                settings = json.load(f)
+
+            deepseek_config = settings.get("deepseek", {})
+            api_key = deepseek_config.get("api_key", "")
+
+            if api_key:
+                return DeepSeekConfig(
+                    api_key=api_key,
+                    base_url=deepseek_config.get("base_url", "https://api.deepseek.com/v1"),
+                    model=deepseek_config.get("model", "deepseek-chat")
+                )
+    except Exception as e:
+        print(f"从配置文件加载失败: {e}", file=sys.stderr)
+
+    return None
+
+
 class DeepSeekMCPClient:
     """DeepSeek MCP客户端"""
 
     def __init__(self, config: Optional[DeepSeekConfig] = None):
         if config is None:
+            # 优先级：环境变量 > settings文件 > 报错
             api_key = os.getenv("DEEPSEEK_API_KEY")
             if not api_key:
-                raise ValueError("DEEPSEEK_API_KEY环境变量未设置")
-            config = DeepSeekConfig(api_key=api_key)
+                config = load_config_from_settings()
+                if config:
+                    api_key = config.api_key
+                else:
+                    raise ValueError("未找到DEEPSEEK_API_KEY环境变量或settings.local.json配置")
+
+            if not config:
+                config = DeepSeekConfig(api_key=api_key)
 
         self.config = config
         self.session = requests.Session()
