@@ -1,0 +1,59 @@
+{
+  "name": "project-dev",
+  "version": "1.0.0",
+  "description": "AI项目开发技能 - 基于三步六动作三坑点的专业AI编程工作流程",
+  "author": "Claude Code Skills",
+  "category": "development",
+  "tags": ["ai-programming", "workflow", "project-management", "methodology"],
+  "main": "prompt.md",
+  "keywords": ["ai编程", "项目开发", "工作流程", "迭代开发"],
+  "license": "MIT",
+  "config": {
+    "methodology": {
+      "steps": 3,
+      "actions": 6,
+      "pitfalls": 3
+    },
+    "workflow_stages": [
+      "requirement_decomposition",
+      "generation_implementation",
+      "acceptance_iteration"
+    ],
+    "core_principles": [
+      "clear_requirement_description",
+      "detailed_documentation",
+      "context_clearing",
+      "strict_generation",
+      "centralized_testing",
+      "batch_fixing"
+    ],
+    "avoidance_rules": [
+      "fragmented_modification",
+      "feature_bug_mixing",
+      "repeated_fixes"
+    ]
+  },
+  "capabilities": [
+    "requirement_analysis",
+    "technical_design",
+    "code_generation",
+    "quality_assurance",
+    "iteration_management",
+    "project_planning"
+  ],
+  "supported_project_types": [
+    "cli_tools",
+    "web_applications",
+    "api_services",
+    "automation_tools",
+    "configuration_management"
+  ],
+  "triggers": [
+    "project_initiation",
+    "feature_development",
+    "bug_fixing",
+    "refactoring",
+    "performance_optimization"
+  ],
+  "output_format": "structured_project_deliverable"
+}
