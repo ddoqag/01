@@ -1,0 +1,49 @@
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "2e88f9da97334650a91c8c0eb6e0e17a.Kr7jEQtx7xst10ZK",
+    "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
+    "API_TIMEOUT_MS": "120000",
+    "CLAUDE_CODE_DEFAULT_MODEL": "glm-4.6",
+    "CLAUDE_CODE_DEFAULT_MAX_TOKENS": "65536",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.6",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-4.6",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-4.6",
+    "GLM_MODEL_DEFAULT": "glm-4.6",
+    "GLM_MODEL_CODING": "glm-4.6-code",
+    "GLM_MAX_TOKENS": "65536",
+    "GLM_API_TIMEOUT": "120",
+    "GLM_TOP_P": "0.9",
+    "GLM_TEMPERATURE": "0.1",
+    "GLM_ENABLE_CODE_FEATURES": "1",
+    "GLM_CODE_AUTO_COMPLETE": "1",
+    "GLM_CODE_GENERATION": "1",
+    "GLM_CODE_DEBUG": "1",
+    "GLM_CODE_REFACTOR": "1",
+    "GLM_CODE_EXPLAIN": "1",
+    "GLM_CODE_OPTIMIZE": "1"
+  },
+  "deepseek": {
+    "api_key": "",
+    "base_url": "https://api.deepseek.com/v1",
+    "model": "deepseek-chat"
+  },
+  "permissions": {
+    "allow": [],
+    "deny": []
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/home/ddo/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "code-documentation@claude-code-workflows": true,
+    "project-health-auditor@claude-code-plugins-plus": true,
+    "ai-experiment-logger@claude-code-plugins-plus": true,
+    "workflow-orchestrator@claude-code-plugins-plus": true,
+    "domain-memory-agent@claude-code-plugins-plus": true,
+    "conversational-api-debugger@claude-code-plugins-plus": true,
+    "ai-commit-gen@claude-code-plugins-plus": true
+  },
+  "alwaysThinkingEnabled": false
+}

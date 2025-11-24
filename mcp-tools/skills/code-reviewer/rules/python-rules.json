@@ -1,0 +1,85 @@
+{
+  "python_rules": {
+    "code_style": {
+      "naming_convention": {
+        "severity": "medium",
+        "patterns": [
+          "class\\s+[a-z]",
+          "def\\s+[A-Z]",
+          "CONSTANT_NAME"
+        ],
+        "description": "命名不符合PEP 8规范",
+        "suggestion": "类使用驼峰命名，函数和变量使用下划线命名"
+      },
+      "line_length": {
+        "severity": "low",
+        "pattern": ".{80,}",
+        "description": "行长度超过79字符",
+        "suggestion": "将长行拆分为多行"
+      }
+    },
+    "error_handling": {
+      "bare_except": {
+        "severity": "high",
+        "pattern": "except\\s*:",
+        "description": "使用裸except可能隐藏错误",
+        "suggestion": "指定具体的异常类型"
+      },
+      "missing_finally": {
+        "severity": "medium",
+        "pattern": "try\\s*:.*except\\s*:",
+        "description": "缺少finally块处理资源清理",
+        "suggestion": "添加finally块或使用with语句"
+      }
+    },
+    "security": {
+      "pickle_usage": {
+        "severity": "critical",
+        "pattern": "pickle\\.",
+        "description": "pickle模块可能执行恶意代码",
+        "suggestion": "使用json或其他安全的序列化方法"
+      },
+      "shell_command": {
+        "severity": "high",
+        "patterns": [
+          "os\\.system",
+          "subprocess\\.call",
+          "eval\\("
+        ],
+        "description": "执行shell命令存在注入风险",
+        "suggestion": "使用参数化命令或安全的API"
+      }
+    },
+    "performance": {
+      "string_concatenation": {
+        "severity": "medium",
+        "pattern": "\\+.*\\+.*\\+",
+        "description": "字符串拼接性能较差",
+        "suggestion": "使用join()或f-string"
+      },
+      "global_variables": {
+        "severity": "medium",
+        "pattern": "global\\s+",
+        "description": "全局变量影响代码可维护性",
+        "suggestion": "使用类属性或参数传递"
+      }
+    },
+    "best_practices": {
+      "none_comparison": {
+        "severity": "medium",
+        "patterns": [
+          "==\\s*None",
+          "!=\\s*None"
+        ],
+        "description": "应该使用is None比较None值",
+        "suggestion": "使用is None或is not None"
+      },
+      "list_comprehension": {
+        "severity": "low",
+        "pattern": "for\\s+.*:\\s*.*\\.append",
+        "description": "可以使用列表推导式简化",
+        "suggestion": "使用列表推导式提高可读性"
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "commit-message",
+  "version": "1.0.0",
+  "description": "智能Git提交信息生成技能 - 根据代码变更自动生成规范的提交信息",
+  "author": "Claude Code Skills",
+  "category": "development",
+  "tags": ["git", "commit", "automation", "conventional-commits"],
+  "main": "prompt.md",
+  "keywords": ["git", "commit", "message", "conventional", "changelog"],
+  "license": "MIT",
+  "config": {
+    "supported_commit_types": [
+      "feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert"
+    ],
+    "max_subject_length": 50,
+    "max_body_line_length": 72,
+    "require_scope": false,
+    "require_body": false,
+    "require_footer": false
+  },
+  "capabilities": [
+    "analyze_git_diff",
+    "generate_conventional_commit",
+    "suggest_commit_type",
+    "extract_scope",
+    "generate_body",
+    "create_footer"
+  ],
+  "triggers": [
+    "git_status",
+    "git_diff",
+    "file_changes"
+  ],
+  "output_format": "conventional_commits"
+}

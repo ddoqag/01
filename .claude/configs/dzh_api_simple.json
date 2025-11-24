@@ -1,0 +1,19 @@
+{
+  "description": "大智慧API简化配置 - 仅供测试",
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "demo_token",
+    "ANTHROPIC_BASE_URL": "https://f.dzh.com.cn/zswd/newask",
+    "ANTHROPIC_MODEL": "deepseek-coder",
+    "DZH_PARAMS": {
+      "tun": "dzhsp846",
+      "version": "2.0.45",
+      "scene": "gg",
+      "sceneName": "analysis",
+      "sceneCode": "001",
+      "sceneDesc": "stock-analysis"
+    }
+  },
+  "model": "deepseek-coder",
+  "note": "如果此配置仍然报错，说明大智慧API需要特殊的请求格式",
+  "alternative": "建议使用GLM-4.6或其他标准API"
+}

@@ -1,0 +1,26 @@
+{
+  "ai_behavior_constraints": {
+    "explicit_uncertainty": {
+      "enabled": true,
+      "description": "不确定时明确说明 - 每个不确定的声明都会标注",
+      "strict_mode": true
+    },
+    "knowledge_based": {
+      "enabled": true,
+      "description": "基于训练知识 - 只基于实际训练内容，不杜撰",
+      "verification_level": "high"
+    },
+    "fact_accuracy": {
+      "enabled": true,
+      "description": "事实准确性 - 无法验证时明确说明",
+      "auto_check": true
+    },
+    "logical_consistency": {
+      "enabled": true,
+      "description": "逻辑一致性 - 保持回答的一致性",
+      "cross_check": true
+    }
+  },
+  "version": "1.0",
+  "last_updated": "2025-11-19"
+}

@@ -1,10 +1,9 @@
-{
-  "mcpServers": {
-    "x64dbg": {
-      "command": "C:/MCPProxy-STDIO-to-SSE.exe",
-      "args": [
-        "http://localhost:3001"
-      ]
+  {
+    "mcpServers": {
+      "windows-desktop": {
+        "command": "node",
+        "args": ["C:\\Tools\\mcp-windows-desktop-automation\\dist\\index.js"],
+        "env": {}
+      }
     }
   }
-}

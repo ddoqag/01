@@ -1,0 +1,38 @@
+diff --git a/src/api/user.js b/src/api/user.js
+index 1234567..abcdefg 100644
+--- a/src/api/user.js
++++ b/src/api/user.js
+@@ -1,15 +1,25 @@
+ const express = require('express');
+ const router = express.Router();
++const jwt = require('jsonwebtoken');
++const bcrypt = require('bcrypt');
+
+ // 获取用户信息
+ router.get('/:id', async (req, res) => {
+   try {
+     const user = await User.findById(req.params.id);
+     res.json(user);
+   } catch (error) {
+     res.status(500).json({ error: error.message });
+   }
+ });
+
++// 用户登录
++router.post('/login', async (req, res) => {
++  try {
++    const { email, password } = req.body;
++    const user = await User.findOne({ email });
++
++    if (!user || !await bcrypt.compare(password, user.password)) {
++      return res.status(401).json({ error: 'Invalid credentials' });
++    }
++
++    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
++    res.json({ token, user });
++  } catch (error) {
++    res.status(500).json({ error: error.message });
++  }
++});
++
+ module.exports = router;

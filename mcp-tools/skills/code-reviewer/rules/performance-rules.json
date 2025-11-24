@@ -1,0 +1,70 @@
+{
+  "performance_rules": {
+    "inefficient_loops": {
+      "nested_loops": {
+        "severity": "medium",
+        "pattern": "for.*for.*",
+        "description": "检测嵌套循环可能导致O(n²)复杂度",
+        "suggestion": "考虑使用哈希表或优化算法"
+      },
+      "inefficient_operations": {
+        "severity": "medium",
+        "patterns": [
+          "length.*for.*",
+          "count.*for.*"
+        ],
+        "description": "在循环中重复计算长度或计数",
+        "suggestion": "在循环外计算长度，或使用缓存"
+      }
+    },
+    "memory_issues": {
+      "memory_leaks": {
+        "severity": "high",
+        "patterns": [
+          "addEventListener.*removeEventListener",
+          "setInterval.*clearInterval"
+        ],
+        "description": "检测潜在的内存泄漏",
+        "suggestion": "确保正确清理事件监听器和定时器"
+      },
+      "large_object_creation": {
+        "severity": "medium",
+        "pattern": "new.*\\[.*\\].*length.*>.*1000",
+        "description": "检测大型对象创建",
+        "suggestion": "考虑使用流式处理或分批处理"
+      }
+    },
+    "database_performance": {
+      "n_plus_one_queries": {
+        "severity": "high",
+        "pattern": "for.*query.*",
+        "description": "检测N+1查询问题",
+        "suggestion": "使用批量查询或eager loading"
+      },
+      "missing_indexes": {
+        "severity": "medium",
+        "pattern": "WHERE.*without.*INDEX",
+        "description": "检测可能缺少数据库索引的查询",
+        "suggestion": "为WHERE子句的字段添加索引"
+      }
+    },
+    "async_performance": {
+      "callback_hell": {
+        "severity": "low",
+        "pattern": "function.*function.*function.*",
+        "description": "检测回调地狱模式",
+        "suggestion": "使用async/await或Promise链"
+      },
+      "blocking_operations": {
+        "severity": "high",
+        "patterns": [
+          "sleep.*",
+          "Thread\\.sleep",
+          "time\\.sleep"
+        ],
+        "description": "检测阻塞操作",
+        "suggestion": "使用异步替代方案"
+      }
+    }
+  }
+}

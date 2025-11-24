@@ -1,0 +1,53 @@
+{
+  "name": "code-reviewer",
+  "version": "1.0.0",
+  "description": "智能代码审查技能 - 自动检测代码质量问题、安全漏洞和最佳实践违规",
+  "author": "Claude Code Skills",
+  "category": "development",
+  "tags": ["code-review", "quality", "security", "best-practices", "static-analysis"],
+  "main": "prompt.md",
+  "keywords": ["code", "review", "analysis", "quality", "security", "performance"],
+  "license": "MIT",
+  "config": {
+    "supported_languages": [
+      "javascript", "typescript", "python", "java", "go", "rust", "c++", "php", "ruby", "csharp"
+    ],
+    "review_categories": [
+      "security",
+      "performance",
+      "maintainability",
+      "readability",
+      "best_practices",
+      "error_handling",
+      "testing",
+      "documentation"
+    ],
+    "severity_levels": [
+      "critical",
+      "high",
+      "medium",
+      "low",
+      "info"
+    ],
+    "max_suggestions_per_category": 5,
+    "include_positive_feedback": true,
+    "generate_fix_suggestions": true
+  },
+  "capabilities": [
+    "static_code_analysis",
+    "security_vulnerability_detection",
+    "performance_optimization_suggestions",
+    "code_style_analysis",
+    "best_practices_validation",
+    "maintainability_assessment",
+    "complexity_analysis",
+    "documentation_review"
+  ],
+  "triggers": [
+    "file_content",
+    "git_diff",
+    "pull_request",
+    "code_snippet"
+  ],
+  "output_format": "structured_review_report"
+}

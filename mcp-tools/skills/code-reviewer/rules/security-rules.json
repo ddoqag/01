@@ -1,0 +1,69 @@
+{
+  "security_rules": {
+    "injection_vulnerabilities": {
+      "sql_injection": {
+        "severity": "critical",
+        "patterns": [
+          "SELECT.*FROM.*WHERE.*\\+.*",
+          "execute.*\\+.*",
+          "query.*\\$\\{.*\\}"
+        ],
+        "description": "检测SQL注入漏洞",
+        "suggestion": "使用参数化查询或ORM"
+      },
+      "xss_vulnerabilities": {
+        "severity": "high",
+        "patterns": [
+          "innerHTML.*\\+.*",
+          "document\\.write.*\\+.*",
+          "eval.*\\+.*"
+        ],
+        "description": "检测跨站脚本攻击(XSS)漏洞",
+        "suggestion": "使用安全的DOM操作方法和内容转义"
+      },
+      "command_injection": {
+        "severity": "critical",
+        "patterns": [
+          "exec.*\\+.*",
+          "system.*\\+.*",
+          "shell_exec.*\\+.*"
+        ],
+        "description": "检测命令注入漏洞",
+        "suggestion": "使用白名单验证和参数化执行"
+      }
+    },
+    "authentication_issues": {
+      "hardcoded_credentials": {
+        "severity": "critical",
+        "patterns": [
+          "password.*=.*['\"][^'\"]*['\"]",
+          "api_key.*=.*['\"][^'\"]*['\"]",
+          "secret.*=.*['\"][^'\"]*['\"]"
+        ],
+        "description": "检测硬编码的凭证信息",
+        "suggestion": "使用环境变量或配置管理系统"
+      },
+      "weak_hashing": {
+        "severity": "high",
+        "patterns": [
+          "md5.*",
+          "sha1.*"
+        ],
+        "description": "检测弱哈希算法",
+        "suggestion": "使用bcrypt、Argon2或PBKDF2"
+      }
+    },
+    "data_exposure": {
+      "sensitive_data_logging": {
+        "severity": "high",
+        "patterns": [
+          "console\\.log.*password",
+          "print.*password",
+          "log.*token"
+        ],
+        "description": "检测敏感数据记录到日志",
+        "suggestion": "在记录前移除敏感信息"
+      }
+    }
+  }
+}

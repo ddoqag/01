@@ -1,0 +1,21 @@
+Claude Project Integration Summary
+==================================
+Integration Time: 2025-11-20 17:11:01
+Source Directory: d:\claude
+Target Directory: C:\Users\ddo\AppData\Roaming\npm
+
+Added Components:
+- Project directories (agents, commands, plugins, etc.)
+- Python scripts and tools
+- Configuration files
+- Documentation
+
+Preserved Components:
+- Existing .claude configuration
+- npm tools and utilities
+- Existing plugins and settings
+
+Next Steps:
+1. Restart Claude to apply new configuration
+2. Check CLAUDE_INTEGRATED.md for project details
+3. Run available Python scripts as needed

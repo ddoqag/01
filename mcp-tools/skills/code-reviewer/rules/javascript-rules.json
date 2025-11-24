@@ -1,0 +1,83 @@
+{
+  "javascript_rules": {
+    "code_quality": {
+      "var_usage": {
+        "severity": "medium",
+        "pattern": "var\\s+",
+        "description": "使用var声明变量，建议使用let或const",
+        "suggestion": "使用const声明常量，let声明可变变量"
+      },
+      "missing_strict_mode": {
+        "severity": "low",
+        "pattern": "'use strict'",
+        "description": "缺少严格模式声明",
+        "suggestion": "在文件或函数顶部添加'use strict'"
+      },
+      "global_variables": {
+        "severity": "medium",
+        "pattern": "window\\.|global\\.",
+        "description": "使用全局变量可能导致命名冲突",
+        "suggestion": "使用模块化或命名空间"
+      }
+    },
+    "async_patterns": {
+      "callback_hell": {
+        "severity": "medium",
+        "pattern": "function.*\\{.*function.*\\{.*function",
+        "description": "嵌套回调可能导致回调地狱",
+        "suggestion": "使用async/await或Promise链"
+      },
+      "missing_error_handling": {
+        "severity": "high",
+        "patterns": [
+          "\\.then\\(",
+          "await\\s+[^;]+"
+        ],
+        "description": "异步操作缺少错误处理",
+        "suggestion": "添加try-catch或.catch()处理"
+      }
+    },
+    "security": {
+      "eval_usage": {
+        "severity": "critical",
+        "pattern": "eval\\(",
+        "description": "eval函数存在代码注入风险",
+        "suggestion": "使用JSON.parse或其他安全替代方案"
+      },
+      "innerHTML_usage": {
+        "severity": "high",
+        "pattern": "innerHTML\\s*=",
+        "description": "innerHTML可能导致XSS攻击",
+        "suggestion": "使用textContent或安全的DOM操作"
+      }
+    },
+    "performance": {
+      "dom_manipulation": {
+        "severity": "medium",
+        "pattern": "appendChild\\s*\\(",
+        "description": "频繁的DOM操作影响性能",
+        "suggestion": "使用DocumentFragment或批量更新"
+      },
+      "event_listeners": {
+        "severity": "medium",
+        "pattern": "addEventListener\\s*\\(",
+        "description": "检查事件监听器是否正确移除",
+        "suggestion": "确保在组件卸载时移除事件监听器"
+      }
+    },
+    "es6_features": {
+      "arrow_functions": {
+        "severity": "low",
+        "pattern": "function\\s*\\(",
+        "description": "可以考虑使用箭头函数",
+        "suggestion": "使用箭头函数简化语法"
+      },
+      "template_literals": {
+        "severity": "low",
+        "pattern": "\\+.*[\"']",
+        "description": "字符串拼接可以使用模板字面量",
+        "suggestion": "使用反引号模板字符串"
+      }
+    }
+  }
+}
