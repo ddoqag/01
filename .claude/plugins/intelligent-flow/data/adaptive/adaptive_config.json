@@ -1,0 +1,17 @@
+{
+  "step_durations": {
+    "需求拆解": 25,
+    "技术设计": 15,
+    "核心实现": 30,
+    "测试验收": 25
+  },
+  "step_weights": {
+    "需求拆解": 0.25,
+    "技术设计": 0.15,
+    "核心实现": 0.35,
+    "测试验收": 0.25
+  },
+  "quality_focus_areas": [],
+  "preferred_approaches": {},
+  "risk_factors": []
+}

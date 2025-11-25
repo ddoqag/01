@@ -1,0 +1,72 @@
+{
+  "name": "intelligent-flow",
+  "version": "1.0.0",
+  "description": "智能3-6-3工作流集成系统 - 学习式AI驱动的项目开发流程",
+  "author": "Claude Code",
+  "main": "index.js",
+  "type": "plugin",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/handlers/session_initializer.py"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/handlers/intelligent_detector.py"
+          }
+        ],
+        "matcher": "开发|项目|新建|创建|实现|功能|应用"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT}/handlers/workflow_guard.py"
+          }
+        ],
+        "matcher": "Edit|Write|MultiEdit"
+      }
+    ]
+  },
+  "commands": {
+    "/flow": {
+      "description": "智能Flow工作流系统",
+      "handler": "python3 ${CLAUDE_PLUGIN_ROOT}/commands/flow_handler.py",
+      "subcommands": {
+        "363": "经典3-6-3工作流",
+        "363-dev": "智能项目开发流程",
+        "363-requirement": "需求拆解阶段",
+        "363-implementation": "代码生成阶段",
+        "363-testing": "验收迭代阶段",
+        "smart": "AI自动选择最佳流程",
+        "adaptive": "个性化自适应流程",
+        "profile": "查看开发者学习档案",
+        "learn": "学习和优化建议"
+      }
+    }
+  },
+  "skills": [
+    "project-dev",
+    "intelligent-workflow"
+  ],
+  "dependencies": {
+    "python": ">=3.8"
+  },
+  "config": {
+    "learning_enabled": true,
+    "auto_detection": true,
+    "personalization": true,
+    "prediction_enabled": true
+  }
+}

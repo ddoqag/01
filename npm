@@ -1,16 +1,20 @@
-#!/bin/sh
-basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+#!/bin/bash
+# NPM包装器脚本
 
-case `uname` in
-    *CYGWIN*|*MINGW*|*MSYS*)
-        if command -v cygpath > /dev/null 2>&1; then
-            basedir=`cygpath -w "$basedir"`
-        fi
-    ;;
-esac
+# 可能的NPM路径
+NPM_PATHS=(
+    "/c/Program Files/nodejs/npm.cmd"
+    "/c/Program Files (x86)/nodejs/npm.cmd"
+    "npm"
+)
 
-if [ -x "$basedir/node" ]; then
-  exec "$basedir/node"  "$basedir/node_modules/npm/bin/npm-cli.js" "$@"
-else 
-  exec node  "$basedir/node_modules/npm/bin/npm-cli.js" "$@"
-fi
+# 查找并执行NPM
+for path in "${NPM_PATHS[@]}"; do
+    if command -v "$path" >/dev/null 2>&1 || [[ -f "$path" ]]; then
+        exec "$path" "$@"
+        exit $?
+    fi
+done
+
+echo "错误: 未找到NPM，请确保已正确安装"
+exit 1

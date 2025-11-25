@@ -1,0 +1,28 @@
+{
+  "enabled": true,
+  "validation_interval": 3600,
+  "auto_repair": true,
+  "notification": {
+    "enabled": true,
+    "critical_only": true
+  },
+  "test_categories": {
+    "system": true,
+    "software": true,
+    "hardware": true,
+    "network": true
+  },
+  "windows_requirements": {
+    "min_version": "10.0",
+    "required_services": [
+      "RpcSs",
+      "DcomLaunch",
+      "PlugPlay"
+    ],
+    "critical_paths": [
+      "C:\\Windows",
+      "C:\\Windows\\System32"
+    ]
+  },
+  "custom_tests": []
+}

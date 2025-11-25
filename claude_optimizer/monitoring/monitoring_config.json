@@ -1,0 +1,15 @@
+{
+  "sampling_interval": 5,
+  "alert_thresholds": {
+    "cpu_usage": 85.0,
+    "memory_usage": 90.0,
+    "disk_usage": 85.0,
+    "response_time": 5000.0
+  },
+  "web_server": {
+    "enabled": true,
+    "port": 8080,
+    "host": "localhost"
+  },
+  "data_retention_days": 7
+}

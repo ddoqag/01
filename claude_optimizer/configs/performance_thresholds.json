@@ -1,0 +1,14 @@
+{
+  "cpu_usage_warning": 80,
+  "cpu_usage_critical": 95,
+  "memory_usage_warning": 85,
+  "memory_usage_critical": 95,
+  "disk_usage_warning": 85,
+  "disk_usage_critical": 95,
+  "network_latency_warning": 100,
+  "network_latency_critical": 500,
+  "response_time_warning": 2000,
+  "response_time_critical": 5000,
+  "error_rate_warning": 5,
+  "error_rate_critical": 10
+}

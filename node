@@ -1,0 +1,20 @@
+#!/bin/bash
+# Node.js包装器脚本
+
+# 可能的Node.js路径
+NODE_PATHS=(
+    "/c/Program Files/nodejs/node.exe"
+    "/c/Program Files (x86)/nodejs/node.exe"
+    "node"
+)
+
+# 查找并执行Node.js
+for path in "${NODE_PATHS[@]}"; do
+    if command -v "$path" >/dev/null 2>&1 || [[ -f "$path" ]]; then
+        exec "$path" "$@"
+        exit $?
+    fi
+done
+
+echo "错误: 未找到Node.js，请确保已正确安装"
+exit 1

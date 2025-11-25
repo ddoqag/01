@@ -1,0 +1,28 @@
+{
+  "technical_risks": {
+    "scope_creep": {
+      "indicators": ["功能", "增加", "扩展", "补充"],
+      "probability_base": 0.3,
+      "mitigation": ["明确需求边界", "设置功能优先级", "分阶段实现"]
+    },
+    "technical_debt": {
+      "indicators": ["快速", "临时", "简单", "暂时"],
+      "probability_base": 0.4,
+      "mitigation": ["预留重构时间", "代码审查", "技术选型评估"]
+    }
+  },
+  "timeline_risks": {
+    "underestimation": {
+      "indicators": ["简单", "容易", "快速", "很快"],
+      "probability_base": 0.35,
+      "mitigation": ["详细任务分解", "缓冲时间", "里程碑检查"]
+    }
+  },
+  "quality_risks": {
+    "insufficient_testing": {
+      "indicators": ["测试", "验证", "检查"],
+      "probability_base": 0.4,
+      "mitigation": ["测试计划", "自动化测试", "代码覆盖率"]
+    }
+  }
+}

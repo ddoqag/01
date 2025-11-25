@@ -1,0 +1,30 @@
+{
+  "backup_enabled": true,
+  "auto_rollback": true,
+  "optimization_modules": [
+    "registry_cleaner",
+    "service_manager",
+    "disk_optimizer",
+    "network_optimizer",
+    "security_enhancer"
+  ],
+  "performance_monitoring": true,
+  "log_level": "INFO",
+  "backup_retention_days": 30,
+  "optimization_schedule": {
+    "enabled": false,
+    "frequency": "weekly",
+    "day": "sunday",
+    "time": "02:00"
+  },
+  "notifications": {
+    "enabled": true,
+    "email": "",
+    "desktop": true
+  },
+  "advanced_options": {
+    "force_optimization": false,
+    "skip_confirmation": false,
+    "experimental_features": false
+  }
+}
