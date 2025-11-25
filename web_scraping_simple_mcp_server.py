@@ -1,23 +1,16 @@
 #!/usr/bin/env python3
 """
 简化版网页抓取MCP服务器
-提供基本的网页内容提取功能（不依赖外部包）
+提供基本的网页内容提取功能
 """
 
 import json
 import sys
 import asyncio
-import subprocess
 import os
 import re
-from pathlib import Path
-from urllib.parse import urljoin, urlparse, urlunparse
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass
-
-# 添加当前目录到Python路径
-current_dir = Path(__file__).parent
-sys.path.insert(0, str(current_dir))
 
 
 @dataclass
@@ -191,7 +184,11 @@ class SimpleWebScrapingMCPServer:
                 title = title_match.group(1).strip() if title_match else "未找到标题"
 
                 # 提取meta描述
-                desc_match = re.search(r'<meta[^>]*name=["\']description["\'][^>]*content=["\']([^"\']*)["\']', content, re.IGNORECASE)
+                desc_match = re.search(
+                r'<meta[^>]*name=["\']description["\'][^>]*content=["\']([^"\']*)["\']',
+                content,
+                re.IGNORECASE
+            )
                 description = desc_match.group(1).strip() if desc_match else "未找到描述"
 
                 return {

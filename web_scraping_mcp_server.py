@@ -19,14 +19,16 @@ from dataclasses import dataclass
 current_dir = Path(__file__).parent
 sys.path.insert(0, str(current_dir))
 
+# 使用便携版Python的依赖包
 try:
     import requests
     from bs4 import BeautifulSoup
     import html2text
     HAS_DEPS = True
-except ImportError:
+    print("✅ Web Scraping MCP服务器依赖包加载成功", file=sys.stderr)
+except ImportError as e:
     HAS_DEPS = False
-    print("警告: 缺少依赖包，请运行: pip install requests beautifulsoup4 html2text", file=sys.stderr)
+    print(f"❌ 依赖包导入失败: {e}", file=sys.stderr)
 
 
 @dataclass
@@ -232,7 +234,11 @@ class WebScrapingMCPServer:
         if self.session is None:
             self.session = requests.Session()
             self.session.headers.update({
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+                'User-Agent': (
+                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                    'AppleWebKit/537.36 (KHTML, like Gecko) '
+                    'Chrome/91.0.4472.124 Safari/537.36'
+                )
             })
         return self.session
 
