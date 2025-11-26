@@ -1,0 +1,175 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ai-integration-platform"
+version = "0.1.0"
+description = "现代化 AI 集成平台，展示 Python 3.13+ 特性"
+readme = "README.md"
+requires-python = ">=3.13"
+license = {text = "MIT"}
+authors = [
+    {name = "Python Pro v3", email = "python-pro@example.com"},
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Framework :: FastAPI",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.6.0",
+    "httpx>=0.28.0",
+    "anthropic>=0.40.0",
+    "openai>=1.55.0",
+    "structlog>=24.4.0",
+    "typer>=0.13.0",
+    "redis>=5.2.0",
+    "asyncpg>=0.30.0",
+    "alembic>=1.14.0",
+    "sqlalchemy[asyncio]>=2.0.36",
+    "prometheus-client>=0.21.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.8.0",
+    "mypy>=1.13.0",
+    "pre-commit>=4.0.0",
+    "python-multipart>=0.0.12",
+    "websockets>=14.0",
+]
+test = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "factory-boy>=3.3.0",
+    "faker>=30.8.0",
+]
+docs = [
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.5.0",
+    "mkdocstrings[python]>=0.26.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/python-pro-v3/ai-integration-platform"
+Documentation = "https://python-pro-v3.github.io/ai-integration-platform"
+Repository = "https://github.com/python-pro-v3/ai-integration-platform.git"
+Issues = "https://github.com/python-pro-v3/ai-integration-platform/issues"
+
+[project.scripts]
+ai-platform = "ai_platform.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ai_platform"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+preview = true
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+    "ARG001", # unused arguments in functions
+    "SIM118", # {key} in dict instead of key in dict.keys()
+    "TCH004", # Move runtime import into type-checking block
+    "PTH", # flake8-use-pathlib
+    "PERF", # Perflint
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "W191",  # indentation contains tabs
+]
+
+[tool.ruff.lint.isort]
+known-third-party = ["fastapi", "pydantic", "httpx"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/*" = ["ARG001"]
+
+[tool.ruff.format]
+preview = true
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_any_generics = true
+strict_equality = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_concatenate = true
+
+[[tool.mypy.overrides]]
+module = [
+    "anthropic.*",
+    "openai.*",
+    "redis.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra -q --strict-markers --strict-config"
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+    "ai: marks tests that require AI API access",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/site-packages/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]

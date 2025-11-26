@@ -1,0 +1,40 @@
+{
+  "mcpServers": {
+    "context7": {
+      "description": "Context7 - 获取最新技术文档和代码示例",
+      "tools": [
+        "resolve-library-id",
+        "get-library-docs"
+      ],
+      "status": "✅ 正常工作",
+      "usage": "直接询问技术库的API文档即可"
+    },
+    "web-scraping": {
+      "description": "Web Scraping MCP服务器 - 网页抓取和内容提取",
+      "command": "./python_portable/python.exe",
+      "args": [
+        "web_scraping_mcp_server.py"
+      ],
+      "cwd": "C:\\Users\\ddo\\AppData\\Roaming\\npm",
+      "tools": [
+        "web_fetch",
+        "web_extract_text",
+        "web_extract_links",
+        "web_page_info"
+      ],
+      "status": "✅ 正常工作",
+      "usage": "/mcp web-scraping <tool> <args>"
+    },
+    "deepseek": {
+      "description": "DeepSeek AI集成 - 通用问答和股票分析",
+      "tools": [
+        "deepseek_ask",
+        "deepseek_analyze_stock",
+        "deepseek_market_analysis"
+      ],
+      "status": "❌ API密钥无效",
+      "usage": "/mcp deepseek <tool> <args>",
+      "issue": "需要有效的DeepSeek API密钥"
+    }
+  }
+}

@@ -1,0 +1,306 @@
+# AI Engineer Framework 默认配置
+
+# 应用基础配置
+app:
+  name: "ai-engineer-framework"
+  version: "0.1.0"
+  debug: false
+  log_level: "INFO"
+  host: "0.0.0.0"
+  port: 8000
+
+# 数据库配置
+database:
+  url: "sqlite:///./data/ai_engineer.db"
+  echo: false
+  pool_size: 10
+  max_overflow: 20
+
+# Redis配置
+redis:
+  url: "redis://localhost:6379/0"
+  max_connections: 20
+  socket_timeout: 5
+
+# LLM配置
+llm_providers:
+  # OpenAI配置
+  openai:
+    type: "llm"
+    provider: "openai"
+    model_name: "gpt-4"
+    api_key: "${OPENAI_API_KEY}"
+    api_base: "https://api.openai.com/v1"
+    max_tokens: 2048
+    temperature: 0.7
+    timeout: 60
+
+  # Anthropic Claude配置
+  anthropic:
+    type: "llm"
+    provider: "anthropic"
+    model_name: "claude-3-sonnet-20240229"
+    api_key: "${ANTHROPIC_API_KEY}"
+    max_tokens: 4096
+    temperature: 0.7
+    timeout: 60
+
+  # 本地模型配置（Ollama）
+  ollama:
+    type: "llm"
+    provider: "ollama"
+    model_name: "llama2"
+    api_base: "http://localhost:11434"
+    max_tokens: 2048
+    temperature: 0.7
+    timeout: 120
+
+# 默认LLM配置
+default_llm: "openai"
+
+# 嵌入模型配置
+embedding_providers:
+  # OpenAI嵌入
+  openai_embedding:
+    type: "embedding"
+    provider: "openai"
+    model_name: "text-embedding-3-large"
+    api_key: "${OPENAI_API_KEY}"
+    embedding_dimension: 3072
+    batch_size: 100
+
+  # 本地嵌入（Sentence Transformers）
+  local_embedding:
+    type: "embedding"
+    provider: "sentence_transformers"
+    model_name: "all-MiniLM-L6-v2"
+    embedding_dimension: 384
+    device: "cpu"
+    batch_size: 32
+
+# 默认嵌入配置
+default_embedding: "openai_embedding"
+
+# 向量存储配置
+vector_stores:
+  # ChromaDB配置
+  chromadb:
+    type: "vector_store"
+    store_type: "chromadb"
+    collection_name: "documents"
+    persist_directory: "./data/chromadb"
+    embedding_dimension: 1536
+
+  # Pinecone配置
+  pinecone:
+    type: "vector_store"
+    store_type: "pinecone"
+    api_key: "${PINECONE_API_KEY}"
+    environment: "${PINECONE_ENVIRONMENT}"
+    index_name: "ai-engineer-docs"
+    embedding_dimension: 1536
+    metric: "cosine"
+
+# 默认向量存储
+default_vector_store: "chromadb"
+
+# RAG系统配置
+rag:
+  top_k: 5
+  similarity_threshold: 0.7
+  max_context_length: 4000
+  chunk_size: 512
+  chunk_overlap: 50
+  chunking_strategy: "fixed_size"
+  enable_rerank: false
+  system_prompt: "你是一个专业的AI助手，请基于提供的上下文信息准确回答用户的问题。"
+  enable_cache: true
+  cache_ttl: 3600
+
+# Agent配置
+agents:
+  # 通用Agent
+  general_agent:
+    name: "通用助手"
+    agent_type: "general"
+    system_prompt: "你是一个有用的AI助手，能够回答各种问题和协助完成各种任务。"
+    llm_model: "gpt-3.5-turbo"
+    temperature: 0.7
+    max_tokens: 2048
+    enable_rag: true
+    tools: []
+
+  # 研究Agent
+  researcher:
+    name: "研究专家"
+    agent_type: "researcher"
+    system_prompt: "你是一个专业的研究专家，擅长信息收集、分析和整理。请提供准确、详细的研究结果。"
+    llm_model: "gpt-4"
+    temperature: 0.3
+    max_tokens: 4096
+    enable_rag: true
+    tools: ["web_search", "document_analysis"]
+
+  # 代码Agent
+  coder:
+    name: "编程助手"
+    agent_type: "coder"
+    system_prompt: "你是一个专业的编程助手，精通多种编程语言和框架。请提供高质量的代码解决方案。"
+    llm_model: "gpt-4"
+    temperature: 0.1
+    max_tokens: 4096
+    enable_rag: false
+    tools: ["code_execution", "code_analysis"]
+
+# 默认Agent
+default_agent: "general_agent"
+
+# 多模态配置
+multimodal:
+  vision_model: "gpt-4-vision-preview"
+  audio_model: "whisper-1"
+  max_image_size: 20971520  # 20MB
+  max_audio_size: 26214400  # 25MB
+  max_video_duration: 600  # 10分钟
+  supported_image_formats: ["jpeg", "png", "gif", "webp"]
+  supported_audio_formats: ["wav", "mp3", "flac"]
+  supported_video_formats: ["mp4", "mov", "avi"]
+  enable_cache: true
+  max_concurrent_processing: 5
+  timeout: 300
+
+# 监控配置
+monitoring:
+  enabled: true
+  metrics_enabled: true
+  logging_enabled: true
+  alerts_enabled: true
+  performance_monitoring: true
+
+  # 指标配置
+  metrics_retention_hours: 24
+  metrics_flush_interval: 60
+
+  # 日志配置
+  log_level: "INFO"
+  log_retention_hours: 168
+
+  # 告警配置
+  alert_evaluation_interval: 30
+  slow_query_threshold: 5.0
+  memory_usage_threshold: 0.8
+
+  # 外部集成
+  prometheus_enabled: false
+  prometheus_port: 8080
+  opentelemetry_enabled: false
+  sentry_enabled: false
+  sentry_dsn: "${SENTRY_DSN}"
+
+# 成本优化配置
+cost_optimization:
+  enabled: true
+  daily_budget_usd: 100.0
+  monthly_budget_usd: 3000.0
+  budget_alert_threshold: 0.8
+
+  # 优化策略
+  optimization_level: "medium"
+  enable_model_switching: true
+  enable_request_caching: true
+  enable_batch_processing: true
+
+  # 模型选择
+  default_model_tier: "standard"
+  fallback_model_tier: "basic"
+  quality_threshold: 0.8
+
+  # 跟踪配置
+  cost_tracking_enabled: true
+  cost_retention_days: 90
+  cost_analysis_interval: 3600
+
+# 安全配置
+security:
+  api_key_required: true
+  rate_limit_enabled: true
+  rate_limit_requests_per_minute: 60
+  cors_enabled: true
+  cors_origins: ["*"]
+  ssl_enabled: false
+  ssl_cert_path: ""
+  ssl_key_path: ""
+
+# 工具配置
+tools:
+  # 网络搜索工具
+  web_search:
+    enabled: true
+    provider: "duckduckgo"
+    max_results: 10
+    timeout: 30
+
+  # 代码执行工具
+  code_execution:
+    enabled: false  # 生产环境中建议禁用
+    timeout: 30
+    max_memory: "512MB"
+
+  # 文档处理工具
+  document_processing:
+    enabled: true
+    max_file_size: 50MB
+    supported_formats: ["pdf", "docx", "txt", "md"]
+
+# 缓存配置
+cache:
+  type: "redis"  # redis, memory, file
+  ttl: 3600
+  max_size: 1000
+  redis_url: "${REDIS_URL:redis://localhost:6379/1}"
+
+# API配置
+api:
+  version: "v1"
+  prefix: "/api/v1"
+  documentation_enabled: true
+  docs_url: "/docs"
+  redoc_url: "/redoc"
+  openapi_url: "/openapi.json"
+
+# 任务队列配置
+task_queue:
+  type: "celery"  # celery, asyncio, redis
+  broker_url: "${CELERY_BROKER_URL:redis://localhost:6379/2}"
+  result_backend: "${CELERY_RESULT_BACKEND:redis://localhost:6379/3}"
+  task_timeout: 300
+  max_retries: 3
+
+# 文件存储配置
+storage:
+  type: "local"  # local, s3, gcs
+  local_path: "./data/files"
+
+  # S3配置
+  s3_bucket: "${S3_BUCKET}"
+  s3_region: "${S3_REGION}"
+  s3_access_key: "${AWS_ACCESS_KEY_ID}"
+  s3_secret_key: "${AWS_SECRET_ACCESS_KEY}"
+
+# 开发配置
+development:
+  auto_reload: true
+  debug_toolbar: true
+  profiling: false
+  test_data: false
+
+# 生产配置
+production:
+  workers: 4
+  worker_class: "uvicorn.workers.UvicornWorker"
+  worker_connections: 1000
+  max_requests: 1000
+  max_requests_jitter: 100
+  preload_app: true
+  timeout: 30
+  keepalive: 2

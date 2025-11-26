@@ -1,0 +1,105 @@
+{
+  "compilerOptions": {
+    // 基础选项
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "checkJs": false,
+
+    // 输出配置
+    "outDir": "./dist",
+    "removeComments": true,
+    "importHelpers": true,
+
+    // React 19+ 配置
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+
+    // 严格模式
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+
+    // 模块解析
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/hooks/*": ["./src/lib/hooks/*"],
+      "@/utils/*": ["./src/lib/utils/*"]
+    },
+
+    // ES 模块互操作性
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // 类型检查
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+
+    // 代码生成
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "inlineSources": true,
+
+    // 高级选项
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": false,
+    "incremental": true,
+    "tsBuildInfoFile": "./.next/cache/tsconfig.tsbuildinfo",
+
+    // 装饰器（如果需要）
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    // 新增 TypeScript 5.0+ 特性
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": true,
+
+    // Next.js 15+ 特定配置
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    ".next",
+    "out",
+    "coverage",
+    ".storybook",
+    "storybook-static"
+  ],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
+}

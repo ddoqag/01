@@ -25,18 +25,19 @@
   },
   "deepseek": {
     "api_key": "MTc2MzYxNTIyNTphYzkzZDllNWQ0YzVkMWQyMTkwYTk4YmM0NGNjNTFjMGVkMjJkODM5MDY4ZDQwOTMyZjhiZTQ5MmZmNjdiNGJl",
-    "base_url": "https://api.deepseek.com/v1",
-    "model": "deepseek-chat",
-    "token_source": "DZH_production_api",
-    "updated_at": "2025-11-24T22:30:00.000Z"
+    "base_url": "https://f.dzh.com.cn/zswd/newask",
+    "model": "dzh-deepseek",
+    "tun": "dzhsp846",
+    "scene": "gg",
+    "token_source": "dynamic_integration",
+    "updated_at": "2025-11-25T13:55:00.000Z"
   },
   "permissions": {
     "allow": [],
     "deny": []
   },
   "statusLine": {
-    "type": "command",
-    "command": "/home/ddo/.claude/statusline-command.sh"
+    "type": "text"
   },
   "enabledPlugins": {
     "code-documentation@claude-code-workflows": true,
@@ -47,5 +48,18 @@
     "conversational-api-debugger@claude-code-plugins-plus": true,
     "ai-commit-gen@claude-code-plugins-plus": true
   },
-  "alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": false,
+  "mcpServers": {
+    "dzh-deepseek": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\ddo\\AppData\\Roaming\\npm\\python_portable\\python.exe",
+        "C:\\Users\\ddo\\AppData\\Roaming\\npm\\fixed_dzh_mcp_server_clean.py"
+      ],
+      "env": {
+        "PYTHONPATH": "C:\\Users\\ddo\\AppData\\Roaming\\npm",
+        "PYTHONIOENCODING": "utf-8"
+      }
+    }
+  }
 }
