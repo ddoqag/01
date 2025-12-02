@@ -1,6 +1,6 @@
 {
   "env": {
-    "ANTHROPIC_AUTH_TOKEN": "7b60ded3de13435484a2b5ce6b49fdf9.FLu9L9oTJXMk8Duo",
+    "ANTHROPIC_AUTH_TOKEN": "faff826ce2314629bbb765e1d2d5a273.jf7AoGS4pdPdEDH1",
     "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
     "API_TIMEOUT_MS": "80000",
     "CLAUDE_CODE_DEFAULT_MODEL": "glm-4.6",
@@ -21,7 +21,10 @@
     "GLM_CODE_DEBUG": "1",
     "GLM_CODE_REFACTOR": "1",
     "GLM_CODE_EXPLAIN": "1",
-    "GLM_CODE_OPTIMIZE": "1"
+    "GLM_CODE_OPTIMIZE": "1",
+    "GLM_ENABLE_WEB_SEARCH": "1",
+    "GLM_WEB_SEARCH_TIMEOUT": "30",
+    "GLM_WEB_SEARCH_MAX_RESULTS": "10"
   },
   "deepseek": {
     "api_key": "MTc2MzYxNTIyNTphYzkzZDllNWQ0YzVkMWQyMTkwYTk4YmM0NGNjNTFjMGVkMjJkODM5MDY4ZDQwOTMyZjhiZTQ5MmZmNjdiNGJl",
@@ -50,7 +53,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\ddo\\.claude\\statusbar_enhanced_simple.ps1\"",
+    "command": "C:\\Users\\ddo\\.claude\\statusline-command.cmd",
     "padding": 1
   },
   "model": "glm-4.6",
@@ -63,7 +66,7 @@
     "conversational-api-debugger@claude-code-plugins-plus": true,
     "ai-commit-gen@claude-code-plugins-plus": true
   },
-  "alwaysThinkingEnabled": false,
+  "alwaysThinkingEnabled": true,
   "mcpServers": {
     "zai-mcp-server": {
       "command": "C:\\Users\\ddo\\AppData\\Roaming\\npm\\zai-mcp-server.cmd",
