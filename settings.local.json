@@ -1,8 +1,8 @@
 {
   "env": {
-    "ANTHROPIC_AUTH_TOKEN": "2e88f9da97334650a91c8c0eb6e0e17a.Kr7jEQtx7xst10ZK",
+    "ANTHROPIC_AUTH_TOKEN": "7b60ded3de13435484a2b5ce6b49fdf9.FLu9L9oTJXMk8Duo",
     "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
-    "API_TIMEOUT_MS": "120000",
+    "API_TIMEOUT_MS": "80000",
     "CLAUDE_CODE_DEFAULT_MODEL": "glm-4.6",
     "CLAUDE_CODE_DEFAULT_MAX_TOKENS": "65536",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
@@ -33,12 +33,27 @@
     "updated_at": "2025-11-25T13:55:00.000Z"
   },
   "permissions": {
-    "allow": [],
-    "deny": []
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Glob",
+      "Grep",
+      "Task",
+      "TodoWrite",
+      "WebFetch",
+      "WebSearch"
+    ],
+    "deny": [],
+    "defaultMode": "acceptEdits"
   },
   "statusLine": {
-    "type": "text"
+    "type": "command",
+    "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\ddo\\.claude\\statusbar_enhanced_simple.ps1\"",
+    "padding": 1
   },
+  "model": "glm-4.6",
   "enabledPlugins": {
     "code-documentation@claude-code-workflows": true,
     "project-health-auditor@claude-code-plugins-plus": true,
@@ -50,15 +65,11 @@
   },
   "alwaysThinkingEnabled": false,
   "mcpServers": {
-    "dzh-deepseek": {
-      "command": "python",
-      "args": [
-        "C:\\Users\\ddo\\AppData\\Roaming\\npm\\python_portable\\python.exe",
-        "C:\\Users\\ddo\\AppData\\Roaming\\npm\\fixed_dzh_mcp_server_clean.py"
-      ],
+    "zai-mcp-server": {
+      "command": "C:\\Users\\ddo\\AppData\\Roaming\\npm\\zai-mcp-server.cmd",
+      "args": [],
       "env": {
-        "PYTHONPATH": "C:\\Users\\ddo\\AppData\\Roaming\\npm",
-        "PYTHONIOENCODING": "utf-8"
+        "NODE_PATH": "C:\\Users\\ddo\\AppData\\Roaming\\npm\\node_modules"
       }
     }
   }

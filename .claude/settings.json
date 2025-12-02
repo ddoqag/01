@@ -1,8 +1,10 @@
 {
   "env": {
-    "ANTHROPIC_AUTH_TOKEN": "716242aa1d2f49a891c36f9d2c10af29.VYpxXUtMkScUf0Q4",
+    "ANTHROPIC_AUTH_TOKEN": "7b60ded3de13435484a2b5ce6b49fdf9.FLu9L9oTJXMk8Duo",
     "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
-    "API_TIMEOUT_MS": "3000000",
+    "API_TIMEOUT_MS": "120000",
+    "CLAUDE_CODE_DEFAULT_MODEL": "glm-4.6",
+    "CLAUDE_CODE_DEFAULT_MAX_TOKENS": "65536",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.6",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-4.6",
@@ -21,13 +23,14 @@
       "WebFetch",
       "WebSearch"
     ],
+    "deny": [],
     "defaultMode": "acceptEdits"
   },
   "model": "glm-4.6",
   "statusLine": {
     "type": "command",
-    "command": "powershell -ExecutionPolicy Bypass -File "C:\Users\ddo\.claude\statusbar_enhanced_simple.ps1"",
+    "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\ddo\\.claude\\statusbar_enhanced_simple.ps1\"",
     "padding": 1
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": false
 }
