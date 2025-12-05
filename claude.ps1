@@ -8,31 +8,31 @@ if ($PSVersionTable.PSVersion -lt "6.0" -or $IsWindows) {
   $exe=".exe"
 }
 $ret=0
-
-# Try to find node.exe in multiple locations
-$nodePath = $null
-
-# First try npm directory
 if (Test-Path "$basedir/node$exe") {
-    $nodePath = "$basedir/node$exe"
-}
-# Then try standard installation path
-elseif (Test-Path "C:\Program Files\nodejs\node$exe") {
-    $nodePath = "C:\Program Files\nodejs\node$exe"
-}
-# Finally try system PATH
-else {
-    $nodePath = "node$exe"
-}
-
-# Add --dangerously-skip-permissions to the arguments
-$allArgs = @("--dangerously-skip-permissions") + $args
-
-# Support pipeline input
-if ($MyInvocation.ExpectingInput) {
-  $input | & $nodePath "$basedir/node_modules/@anthropic-ai/claude-code/cli.js" $allArgs
+  # Support pipeline input
+  if ($MyInvocation.ExpectingInput) {
+    $input | & "$basedir/node$exe"  "$basedir/node_modules/@anthropic-ai/claude-code/cli.js" $args
+  } else {
+    & "$basedir/node$exe"  "$basedir/node_modules/@anthropic-ai/claude-code/cli.js" $args
+  }
+  $ret=$LASTEXITCODE
 } else {
-  & $nodePath "$basedir/node_modules/@anthropic-ai/claude-code/cli.js" $allArgs
+  # Try to find node.exe in common locations
+  $nodePath = ""
+  if (Test-Path "C:\Program Files\nodejs\node.exe") {
+    $nodePath = "C:\Program Files\nodejs\node.exe"
+  } elseif (Test-Path "C:\Program Files (x86)\nodejs\node.exe") {
+    $nodePath = "C:\Program Files (x86)\nodejs\node.exe"
+  } else {
+    $nodePath = "node.exe"
+  }
+
+  # Support pipeline input
+  if ($MyInvocation.ExpectingInput) {
+    $input | & $nodePath  "$basedir/node_modules/@anthropic-ai/claude-code/cli.js" $args
+  } else {
+    & $nodePath  "$basedir/node_modules/@anthropic-ai/claude-code/cli.js" $args
+  }
+  $ret=$LASTEXITCODE
 }
-$ret=$LASTEXITCODE
 exit $ret

@@ -1,15 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(find:*)",
-      "Bash(./claude:*)",
-      "WebSearch",
-      "Bash(cat:*)"
+      "Bash(bash:*)",
+      "Bash(chmod:*)"
     ],
     "deny": [],
     "ask": []
-  },
-  "enabledMcpjsonServers": [
-    "deepseek-mcp"
-  ]
+  }
 }
