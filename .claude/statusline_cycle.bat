@@ -13,9 +13,9 @@ if "%second%"=="" set "second=0"
 set /a "mod=%second% %% 3"
 
 if %mod%==0 (
-    echo 🎯 Flow ~/AppData/Roaming/npm
+    echo 🎯 Flow %CD%
 ) else if %mod%==1 (
-    echo 🔗 AgentFlow ~/AppData/Roaming/npm
+    echo 🔗 AgentFlow %CD%
 ) else (
-    echo 🚀 Fusion ~/AppData/Roaming/npm
+    echo 🚀 Fusion %CD%
 )
