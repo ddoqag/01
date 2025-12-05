@@ -36,12 +36,15 @@
       "WebFetch",
       "WebSearch"
     ],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "acceptEdits",
+    "autoExitEditMode": true,
+    "editModeTimeout": 5000
   },
   "statusLine": {
     "type": "command",
-    "command": "C:\\Users\\ddo\\AppData\\Roaming\\npm\\.claude\\statusline_dynamic.bat",
-    "padding": 1
+    "command": "C:\\Users\\ddo\\AppData\\Roaming\\npm\\.claude\\statusline_smart.bat",
+    "padding": 1,
+    "refreshInterval": 500
   },
   "enabledPlugins": {
     "code-documentation@claude-code-workflows": true,
