@@ -1,0 +1,40 @@
+{
+  "mcpServers": {
+    "context7": {
+      "description": "Context7 - Get latest technical documentation and code examples",
+      "tools": [
+        "resolve-library-id",
+        "get-library-docs"
+      ],
+      "status": "Working",
+      "usage": "Ask directly for API documentation of technical libraries"
+    },
+    "web-scraping": {
+      "description": "Web Scraping MCP Server - Web scraping and content extraction",
+      "command": "./python_portable/python.exe",
+      "args": [
+        "web_scraping_mcp_server.py"
+      ],
+      "cwd": "C:\\Users\\ddo\\AppData\\Roaming\\npm",
+      "tools": [
+        "web_fetch",
+        "web_extract_text",
+        "web_extract_links",
+        "web_page_info"
+      ],
+      "status": "Working",
+      "usage": "/mcp web-scraping <tool> <args>"
+    },
+    "deepseek": {
+      "description": "DeepSeek AI Integration - General Q&A and stock analysis",
+      "tools": [
+        "deepseek_ask",
+        "deepseek_analyze_stock",
+        "deepseek_market_analysis"
+      ],
+      "status": "API key invalid",
+      "usage": "/mcp deepseek <tool> <args>",
+      "issue": "Valid DeepSeek API key required"
+    }
+  }
+}
